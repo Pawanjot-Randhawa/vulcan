@@ -46,3 +46,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 	if has_focus:
 		move_and_slide()
+
+
+func player():
+	pass;
