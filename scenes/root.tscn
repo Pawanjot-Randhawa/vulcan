@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cn6de8vgq7eoa" path="res://scenes/rocket.tscn" id="2_twpsu"]
 [ext_resource type="Texture2D" uid="uid://ceme5u0ol4p1h" path="res://assets/textures/badGround.jpg" id="4_sqa0i"]
 
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5px3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
