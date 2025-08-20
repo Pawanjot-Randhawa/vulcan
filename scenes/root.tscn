@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyak7p6h35sve"]
+[gd_scene load_steps=11 format=3 uid="uid://cyak7p6h35sve"]
 
 [ext_resource type="PackedScene" uid="uid://byi544uryy3dy" path="res://scenes/player.tscn" id="1_j5px3"]
-[ext_resource type="PackedScene" uid="uid://c8xw61ioejwef" path="res://scenes/npc.tscn" id="2_twpsu"]
+[ext_resource type="Texture2D" uid="uid://bf52fcqydpiff" path="res://assets/textures/ground.jpg" id="1_lrqlo"]
+[ext_resource type="PackedScene" uid="uid://cn6de8vgq7eoa" path="res://scenes/rocket.tscn" id="2_twpsu"]
+[ext_resource type="Texture2D" uid="uid://ceme5u0ol4p1h" path="res://assets/textures/badGround.jpg" id="4_sqa0i"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5px3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -16,6 +19,19 @@ sky = SubResource("Sky_twpsu")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqa0i"]
+albedo_texture = ExtResource("1_lrqlo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jh1ax"]
+albedo_texture = ExtResource("4_sqa0i")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kycxp"]
+albedo_texture = ExtResource("1_lrqlo")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
 [node name="Root" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -26,11 +42,24 @@ shadow_enabled = true
 environment = SubResource("Environment_lrqlo")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sqa0i")
 use_collision = true
 size = Vector3(20, 1, 25)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_j5px3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72297, 0.500111, 3.08681)
 
-[node name="npc" parent="." instance=ExtResource("2_twpsu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03845, -4.33241)
+[node name="Node3D" parent="." instance=ExtResource("2_twpsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.83253, -10)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+material_override = SubResource("StandardMaterial3D_jh1ax")
+use_collision = true
+radius = 7.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9159, 0, -24.274)
+material_override = SubResource("StandardMaterial3D_kycxp")
+use_collision = true
+radius = 50.0
