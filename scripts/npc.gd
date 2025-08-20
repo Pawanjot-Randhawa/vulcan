@@ -14,7 +14,6 @@ func _process(delta):
 		if Input.is_action_just_pressed("interact"):
 			print("chatting w npc")
 			var dialogue = DialogueManager.show_example_dialogue_balloon(load("res://dialogue/instructions.dialogue"), "start");
-			dialogue.connect("dialogue_ended", on_dialogue_ended);
 			if player:
 				player.has_focus = false;
 
