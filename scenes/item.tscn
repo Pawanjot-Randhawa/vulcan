@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl8f8f8qs6ef2"]
+
+[ext_resource type="Script" uid="uid://cn6k6cyhsooip" path="res://scripts/item.gd" id="1_s8enn"]
+[ext_resource type="PackedScene" uid="uid://by2xmbp672yay" path="res://assets/Screw/tornillofbx.fbx" id="2_s8enn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6muww"]
+height = 2.06437
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6brss"]
+
+[node name="item" type="CharacterBody3D"]
+script = ExtResource("1_s8enn")
+
+[node name="tornillofbx" parent="." instance=ExtResource("2_s8enn")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.655, 0, 0, 0, 0.655, 0, 0, 0, 0.655, 0, 0.384316, 0)
+shape = SubResource("CapsuleShape3D_6muww")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.48, 0, 0, 0, 1.48, 0, 0, 0, 1.48, 0, 0.454808, 0)
+shape = SubResource("SphereShape3D_6brss")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

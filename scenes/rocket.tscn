@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn6de8vgq7eoa"]
+[gd_scene load_steps=12 format=3 uid="uid://cn6de8vgq7eoa"]
 
 [ext_resource type="ArrayMesh" uid="uid://bdwjcsrk364rc" path="res://assets/Rocket/Rocket_2.obj" id="1_agf72"]
+[ext_resource type="Script" uid="uid://dambh8tvcww7f" path="res://scripts/rocket.gd" id="1_y2y7n"]
 [ext_resource type="Texture2D" uid="uid://c7fwd4835u0pq" path="res://assets/Rocket/Albedo_Rocket_2.png" id="2_y2y7n"]
 [ext_resource type="Texture2D" uid="uid://3a4nf4rde3j1" path="res://assets/particles/T_smoke_b7.png" id="3_8kmw3"]
 
@@ -43,7 +44,11 @@ scale_curve = SubResource("CurveTexture_fa8w1")
 
 [sub_resource type="QuadMesh" id="QuadMesh_hhimn"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y2y7n"]
+radius = 0.769888
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_y2y7n")
 
 [node name="Rocket2" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -58,3 +63,12 @@ lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_1nvrn")
 draw_pass_1 = SubResource("QuadMesh_hhimn")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3.005, 0, 0, 0, 3.005, 0, 0, 0, 3.005, 0.119056, 0.104063, 0)
+shape = SubResource("CapsuleShape3D_y2y7n")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
