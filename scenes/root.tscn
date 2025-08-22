@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyak7p6h35sve"]
+[gd_scene load_steps=14 format=3 uid="uid://cyak7p6h35sve"]
 
 [ext_resource type="PackedScene" uid="uid://byi544uryy3dy" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Texture2D" uid="uid://bf52fcqydpiff" path="res://assets/textures/ground.jpg" id="1_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://cn6de8vgq7eoa" path="res://scenes/rocket.tscn" id="2_twpsu"]
 [ext_resource type="Texture2D" uid="uid://ceme5u0ol4p1h" path="res://assets/textures/badGround.jpg" id="4_sqa0i"]
-
+[ext_resource type="PackedScene" uid="uid://c8xw61ioejwef" path="res://scenes/npc.tscn" id="5_kycxp"]
+[ext_resource type="PackedScene" uid="uid://bl8f8f8qs6ef2" path="res://scenes/item.tscn" id="6_j287u"]
+[ext_resource type="PackedScene" uid="uid://bbs3wykgu4pj6" path="res://scenes/game_ui.tscn" id="7_j287u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5px3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -46,6 +48,36 @@ material_override = SubResource("StandardMaterial3D_sqa0i")
 use_collision = true
 size = Vector3(20, 1, 25)
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -25)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -25)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_j5px3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72297, 0.500111, 3.08681)
 
@@ -59,7 +91,21 @@ use_collision = true
 radius = 7.0
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9159, 0, -24.274)
+transform = Transform3D(0.92736, 0, 0.37417, 0, 1, 0, -0.37417, 0, 0.92736, 76.5478, -0.502866, 7.32484)
 material_override = SubResource("StandardMaterial3D_kycxp")
 use_collision = true
 radius = 50.0
+
+[node name="npc" parent="." instance=ExtResource("5_kycxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233509, 1, -10.3588)
+
+[node name="item" parent="." instance=ExtResource("6_j287u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8885, 0.500001, 7.25128)
+
+[node name="item2" parent="." instance=ExtResource("6_j287u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55962, 1.75892, 22.5826)
+
+[node name="item3" parent="." instance=ExtResource("6_j287u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.1339, 0.5, -2.38738)
+
+[node name="GameUI" parent="." instance=ExtResource("7_j287u")]

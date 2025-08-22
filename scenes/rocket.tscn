@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cn6de8vgq7eoa"]
+[gd_scene load_steps=16 format=3 uid="uid://cn6de8vgq7eoa"]
 
 [ext_resource type="ArrayMesh" uid="uid://bdwjcsrk364rc" path="res://assets/Rocket/Rocket_2.obj" id="1_agf72"]
 [ext_resource type="Script" uid="uid://dambh8tvcww7f" path="res://scripts/rocket.gd" id="1_y2y7n"]
 [ext_resource type="Texture2D" uid="uid://c7fwd4835u0pq" path="res://assets/Rocket/Albedo_Rocket_2.png" id="2_y2y7n"]
 [ext_resource type="Texture2D" uid="uid://3a4nf4rde3j1" path="res://assets/particles/T_smoke_b7.png" id="3_8kmw3"]
+[ext_resource type="Shader" uid="uid://cj42w30pnxxu2" path="res://shaders/safeZone.gdshader" id="5_8kmw3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1h3n"]
 albedo_texture = ExtResource("2_y2y7n")
@@ -47,6 +48,23 @@ scale_curve = SubResource("CurveTexture_fa8w1")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y2y7n"]
 radius = 0.769888
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1h3n"]
+render_priority = 0
+shader = ExtResource("5_8kmw3")
+shader_parameter/safe_color = Color(0, 1, 0, 0.15)
+shader_parameter/border_color = Color(0, 1, 0, 1)
+shader_parameter/border_thickness = 0.1
+shader_parameter/glow_strength = 1.2
+shader_parameter/pulse_speed = 1.0
+shader_parameter/pulse_intensity = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_y2y7n"]
+radius = 20.0
+height = 20.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8kmw3"]
+radius = 20.0
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_y2y7n")
 
@@ -70,5 +88,20 @@ draw_pass_1 = SubResource("QuadMesh_hhimn")
 transform = Transform3D(3.005, 0, 0, 0, 3.005, 0, 0, 0, 3.005, 0.119056, 0.104063, 0)
 shape = SubResource("CapsuleShape3D_y2y7n")
 
+[node name="SafeAreaVisuals" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_m1h3n")
+mesh = SubResource("SphereMesh_y2y7n")
+
+[node name="SafeArea3D" type="Area3D" parent="."]
+
+[node name="SafeZone" type="CollisionShape3D" parent="SafeArea3D"]
+shape = SubResource("SphereShape3D_8kmw3")
+
+[node name="heat_tick" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="SafeArea3D" to="." method="_on_safe_area_3d_body_entered"]
+[connection signal="body_exited" from="SafeArea3D" to="." method="_on_safe_area_3d_body_exited"]
+[connection signal="timeout" from="heat_tick" to="." method="_on_heat_tick_timeout"]

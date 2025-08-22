@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bl8f8f8qs6ef2"]
 
 [ext_resource type="Script" uid="uid://cn6k6cyhsooip" path="res://scripts/item.gd" id="1_s8enn"]
-[ext_resource type="PackedScene" uid="uid://by2xmbp672yay" path="res://assets/Screw/tornillofbx.fbx" id="2_s8enn"]
+[ext_resource type="PackedScene" uid="uid://cfyht8w786u7b" path="res://assets/Screw/tornillofbx.fbx" id="2_s8enn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6muww"]
 height = 2.06437

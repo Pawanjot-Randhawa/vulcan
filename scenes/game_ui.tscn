@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbs3wykgu4pj6"]
+
+[ext_resource type="Script" uid="uid://bf3apndnyww6j" path="res://scripts/game_ui.gd" id="1_yubou"]
+[ext_resource type="Texture2D" uid="uid://bc6cuqox4oyji" path="res://assets/pictures/screwImage.png" id="2_rns2u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojb23"]
+bg_color = Color(0.0980392, 0.0823529, 0.0823529, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yubou"]
+bg_color = Color(0.752941, 0.396078, 0.14902, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -3.0
+offset_right = 9.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yubou")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -376.0
+offset_right = -42.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ojb23")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yubou")
+step = 1.0
+value = 19.0
+fill_mode = 3
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -223.0
+offset_right = 615.0
+offset_bottom = -46.0
+grow_vertical = 0
+
+[node name="Screw1" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_rns2u")
+expand_mode = 2
+
+[node name="Screw2" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_rns2u")
+expand_mode = 3
+
+[node name="Screw3" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_rns2u")
+expand_mode = 3

@@ -1,3 +1,4 @@
 extends Node
 
-var counter: int = 0;
+var item_counter: int = 0;
+var heat: int = 0;
