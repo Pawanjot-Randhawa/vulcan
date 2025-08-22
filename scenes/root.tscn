@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyak7p6h35sve"]
+[gd_scene load_steps=15 format=3 uid="uid://cyak7p6h35sve"]
 
+[ext_resource type="Script" uid="uid://bact7m2ya0w2n" path="res://scripts/root.gd" id="1_5sfjl"]
 [ext_resource type="PackedScene" uid="uid://byi544uryy3dy" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Texture2D" uid="uid://bf52fcqydpiff" path="res://assets/textures/ground.jpg" id="1_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://cn6de8vgq7eoa" path="res://scenes/rocket.tscn" id="2_twpsu"]
 [ext_resource type="Texture2D" uid="uid://ceme5u0ol4p1h" path="res://assets/textures/badGround.jpg" id="4_sqa0i"]
 [ext_resource type="PackedScene" uid="uid://c8xw61ioejwef" path="res://scenes/npc.tscn" id="5_kycxp"]
 [ext_resource type="PackedScene" uid="uid://bl8f8f8qs6ef2" path="res://scenes/item.tscn" id="6_j287u"]
-[ext_resource type="PackedScene" uid="uid://bbs3wykgu4pj6" path="res://scenes/game_ui.tscn" id="7_j287u"]
+[ext_resource type="PackedScene" path="res://scenes/game_ui.tscn" id="7_j287u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5px3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -35,6 +36,7 @@ uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 
 [node name="Root" type="Node"]
+script = ExtResource("1_5sfjl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
