@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8xw61ioejwef"]
+[gd_scene load_steps=7 format=3 uid="uid://c8xw61ioejwef"]
 
 [ext_resource type="Script" uid="uid://m643edf4cflk" path="res://scripts/npc.gd" id="1_nh2m4"]
 
@@ -12,6 +12,8 @@ material = SubResource("StandardMaterial3D_nh2m4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6brss"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_nh2m4"]
+
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_nh2m4")
 
@@ -24,8 +26,13 @@ mesh = SubResource("BoxMesh_r3eea")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(2.36, 0, 0, 0, 2.36, 0, 0, 0, 2.36, 0, 0.3, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.3, 0)
 shape = SubResource("SphereShape3D_6brss")
+
+[node name="Indicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65584, 0)
+visible = false
+mesh = SubResource("CylinderMesh_nh2m4")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

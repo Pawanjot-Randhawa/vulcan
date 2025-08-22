@@ -11,19 +11,23 @@ func _process(_delta):
 		print('Deposited one Coin');
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	in_range = true;
+	if (body.has_method("player")):
+		in_range = true;
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	in_range = false;
+	if (body.has_method("player")):
+		in_range = false;
 
 
 func _on_safe_area_3d_body_entered(body: Node3D) -> void:
 	#in theroy we should check if body is tghe player but does not matter in this game
+	if(body.has_method("player")):
+		print('is player');
 	player_safe = false
 
 
-func _on_safe_area_3d_body_exited(body: Node3D) -> void:
+func _on_safe_area_3d_body_exited(_body: Node3D) -> void:
 	player_safe = true
 
 
