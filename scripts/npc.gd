@@ -3,8 +3,7 @@ extends CharacterBody3D
 
 var player;
 var player_in_chat_zone = false;
-
-@onready var indicator: MeshInstance3D = $Indicator;
+@onready var indicator: Node3D = $Indicator;
 
 
 func on_dialogue_ended():

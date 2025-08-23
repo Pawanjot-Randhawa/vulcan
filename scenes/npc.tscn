@@ -12,7 +12,8 @@ material = SubResource("StandardMaterial3D_nh2m4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6brss"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_nh2m4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nh2m4"]
+viewport_path = NodePath("Indicator/SubViewport")
 
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_nh2m4")
@@ -29,10 +30,25 @@ mesh = SubResource("BoxMesh_r3eea")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.3, 0)
 shape = SubResource("SphereShape3D_6brss")
 
-[node name="Indicator" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65584, 0)
+[node name="Indicator" type="Node3D" parent="."]
 visible = false
-mesh = SubResource("CylinderMesh_nh2m4")
+
+[node name="Sprite3D" type="Sprite3D" parent="Indicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89793, 0)
+texture = SubResource("ViewportTexture_nh2m4")
+
+[node name="SubViewport" type="SubViewport" parent="Indicator"]
+transparent_bg = true
+size = Vector2i(516, 516)
+
+[node name="Label" type="Label" parent="Indicator/SubViewport"]
+offset_right = 516.0
+offset_bottom = 516.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 156
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
