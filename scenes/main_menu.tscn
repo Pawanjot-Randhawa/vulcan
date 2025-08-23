@@ -1,0 +1,195 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwhiopsaqafwh"]
+
+[ext_resource type="Script" uid="uid://ct30t0chkc4w6" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="Texture2D" uid="uid://bf52fcqydpiff" path="res://assets/textures/ground.jpg" id="2_jk1qb"]
+[ext_resource type="PackedScene" uid="uid://cn6de8vgq7eoa" path="res://scenes/rocket.tscn" id="4_lgwnu"]
+[ext_resource type="Script" uid="uid://ct38h0v18akxa" path="res://scripts/start_menu.gd" id="5_8ln24"]
+[ext_resource type="PackedScene" uid="uid://c8xw61ioejwef" path="res://scenes/npc.tscn" id="6_rcqid"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5px3"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_twpsu"]
+sky_material = SubResource("ProceduralSkyMaterial_j5px3")
+
+[sub_resource type="Environment" id="Environment_lrqlo"]
+background_mode = 2
+sky = SubResource("Sky_twpsu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqa0i"]
+albedo_texture = ExtResource("2_jk1qb")
+
+[node name="Root" type="Node"]
+script = ExtResource("1_wu84c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lrqlo")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -25)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -25)
+material_override = SubResource("StandardMaterial3D_sqa0i")
+use_collision = true
+size = Vector3(20, 1, 25)
+
+[node name="Node3D" parent="." instance=ExtResource("4_lgwnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.83253, -10)
+
+[node name="npc" parent="." instance=ExtResource("6_rcqid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233509, 1, -10.3588)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32717, 0, -10.6779)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.98144, 0.191768, 0, -0.191768, 0.98144, 0.284758, 5.62688, 8.28415)
+
+[node name="startMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("5_8ln24")
+
+[node name="ButtonsMargin" type="MarginContainer" parent="startMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -565.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonsVBoxContainer" type="VBoxContainer" parent="startMenu/ButtonsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="startMenu/ButtonsMargin/ButtonsVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="CreditsButton" type="Button" parent="startMenu/ButtonsMargin/ButtonsVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="startMenu/ButtonsMargin/ButtonsVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[node name="CreditsView" type="Control" parent="startMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="startMenu/CreditsView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.909804, 0.835294, 0.752941, 0.776471)
+
+[node name="CreditsMargin" type="MarginContainer" parent="startMenu/CreditsView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ColorRect" type="ColorRect" parent="startMenu/CreditsView/CreditsMargin"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.129412, 0.14902, 0.180392, 0.901961)
+
+[node name="CreditsVbox" type="VBoxContainer" parent="startMenu/CreditsView/CreditsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="TopHbox" type="HBoxContainer" parent="startMenu/CreditsView/CreditsMargin/CreditsVbox"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="startMenu/CreditsView/CreditsMargin/CreditsVbox/TopHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="TItle" type="Label" parent="startMenu/CreditsView/CreditsMargin/CreditsVbox/TopHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="CreditsText" type="Label" parent="startMenu/CreditsView/CreditsMargin/CreditsVbox"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+
+Yeah this looks bad but i cant be bothered to fix it on this god dam laptop
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="startMenu/ButtonsMargin/ButtonsVBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="startMenu/ButtonsMargin/ButtonsVBoxContainer/CreditsButton" to="startMenu" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="startMenu/ButtonsMargin/ButtonsVBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="startMenu/CreditsView/CreditsMargin/CreditsVbox/TopHbox/BackButton" to="startMenu" method="_on_back_button_pressed"]
