@@ -1,20 +1,23 @@
 ~ start
+if GameStates.dialogueCounter == 0:
+	Robot: Hi no0b!
+	Robot: Our ship was broken :(, fix go collect the pieces and fix our ship
+	otherwise we'll be stuck on Vulcan!!! omg!!!
+	Robot: go find the 3 screws now!
+else if GameStates.dialogueCounter == 1:
+	Robot: wowwow you got a single screw!! im so
+	not proud of you! loser!
+	Robot: hurry and get the 2 other screws so we can leave !11111 
+else if GameStates.dialogueCounter == 2:
+	Robot: You're so close to finishing! it's almost as if u've finally been able to do something!
+	im so again not proud! 
+	Robot: hrruy and get the last 1 screw left!
+else if GameStates.dialogueCounter == 3 && !GameStates.isDone:
+	Robot: U found the last screw! good job! 
+	jk
+	Robot: go put it in
 
-match GameStates.dialogueCounter:
-	when 0:
-		Robot: Hi no0b!
-		Robot: Our ship was broken :(, fix go collect the pieces and fix our ship
-		otherwise we'll be stuck on Vulcan!!! omg!!!
-		- You're ugly
-		Robot: no u! go find the 3 screws now!
-	when 1:
-		Robot: wowwow you got a single screw!! im so
-		not proud of you! loser!
-		Robot: hurry and get the 2 other screws so we can leave !11111 
-	when 2:
-		Robot: You're so close to finishing! it's almost as if u've finally been able to do something!
-		im so again not proud! 
-		Robot: hrruy and get the last 1 screw left!
-	else:
-		Robot: Hurry and go put the final screw so we can leave! lets boogie!
+
+if GameStates.isDone:
+	Robot: lets boogati!
 ~ END

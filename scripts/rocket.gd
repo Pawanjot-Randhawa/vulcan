@@ -2,13 +2,19 @@ extends Node3D
 
 var in_range: bool = false
 var player_safe = true
+var addedScrews: int = 0;
 
 @onready var heat_tick: Timer = $heat_tick
 
 func _process(_delta):
 	if in_range and GameStates.item_counter > 0 and Input.is_action_just_pressed("interact"):
 		GameStates.item_counter -= 1;
+		addedScrews += 1;
 		print('Deposited one Coin');
+	if addedScrews >= 3:
+		
+		GameStates.isDone = true;
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if (body.has_method("player")):
