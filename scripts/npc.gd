@@ -4,6 +4,7 @@ extends CharacterBody3D
 var player;
 var player_in_chat_zone = false;
 @onready var indicator: Node3D = $Indicator;
+@onready var beep_boop_sound: AudioStreamPlayer3D = $BeepBoopSound
 
 
 func on_dialogue_ended():
@@ -16,6 +17,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("interact"):
 			print("chatting w npc")
 			var _dialogue = DialogueManager.show_example_dialogue_balloon(load("res://dialogue/instructions.dialogue"), "start");
+			beep_boop_sound.play()
 			if player:
 				player.has_focus = false;
 

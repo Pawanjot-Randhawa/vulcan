@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl8f8f8qs6ef2"]
+[gd_scene load_steps=6 format=3 uid="uid://bl8f8f8qs6ef2"]
 
 [ext_resource type="Script" uid="uid://cn6k6cyhsooip" path="res://scripts/item.gd" id="1_s8enn"]
-[ext_resource type="PackedScene" uid="uid://by2xmbp672yay" path="res://assets/Screw/tornillofbx.fbx" id="2_s8enn"]
+[ext_resource type="PackedScene" uid="uid://cfyht8w786u7b" path="res://assets/Screw/tornillofbx.fbx" id="2_s8enn"]
+[ext_resource type="AudioStream" uid="uid://bb76t2de2apfk" path="res://assets/sound/76419__ifartinurgeneraldirection__space-1.mp3" id="3_6muww"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6muww"]
 height = 2.06437
@@ -23,5 +24,14 @@ shape = SubResource("CapsuleShape3D_6muww")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1.48, 0, 0, 0, 1.48, 0, 0, 0, 1.48, 0, 0.454808, 0)
 shape = SubResource("SphereShape3D_6brss")
+
+[node name="PingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_6muww")
+volume_db = -20.0
+unit_size = 50.0
+max_db = 0.0
+autoplay = true
+max_distance = 15.0
+parameters/looping = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

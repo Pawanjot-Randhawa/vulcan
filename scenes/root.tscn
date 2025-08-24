@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyak7p6h35sve"]
+[gd_scene load_steps=16 format=3 uid="uid://cyak7p6h35sve"]
 
 [ext_resource type="Script" uid="uid://bact7m2ya0w2n" path="res://scripts/root.gd" id="1_5sfjl"]
 [ext_resource type="PackedScene" uid="uid://byi544uryy3dy" path="res://scenes/player.tscn" id="1_j5px3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8xw61ioejwef" path="res://scenes/npc.tscn" id="5_kycxp"]
 [ext_resource type="PackedScene" uid="uid://bl8f8f8qs6ef2" path="res://scenes/item.tscn" id="6_j287u"]
 [ext_resource type="PackedScene" uid="uid://bbs3wykgu4pj6" path="res://scenes/game_ui.tscn" id="7_j287u"]
+[ext_resource type="AudioStream" uid="uid://d0evkisuttk1q" path="res://assets/sound/792707__universfield__mysterious-dark-background.mp3" id="9_3hfy5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5px3"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -111,3 +112,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55962, 1.75892, 22.5826)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.1339, 0.5, -2.38738)
 
 [node name="GameUI" parent="." instance=ExtResource("7_j287u")]
+
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3hfy5")
+volume_db = -10.759
+autoplay = true
+parameters/looping = true
