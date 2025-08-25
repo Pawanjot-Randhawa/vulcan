@@ -42,5 +42,7 @@ func _on_heat_tick_timeout() -> void:
 		if GameStates.heat < 100:
 			GameStates.heat += 5
 	else:
-		if GameStates.heat > 0:
-			GameStates.heat -= 5
+		if GameStates.heat <= 20:
+			GameStates.heat = 0
+		elif GameStates.heat > 0:
+			GameStates.heat -= 20

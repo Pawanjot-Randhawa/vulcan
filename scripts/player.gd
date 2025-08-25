@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 @export_range(0.0, 2.0) var sensitivity := .5
 
-const SPEED = 5.0
+const SPEED = 7.5
 const JUMP_VELOCITY = 4.5
 const SENS_MULTIPLIER = 0.025
 
