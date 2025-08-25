@@ -12,7 +12,7 @@ func _process(_delta):
 		addedScrews += 1;
 		print('Deposited one Coin');
 	if addedScrews >= 3:
-		
+		get_tree().change_scene_to_file("res://scenes/endGame.tscn");
 		GameStates.isDone = true;
 
 

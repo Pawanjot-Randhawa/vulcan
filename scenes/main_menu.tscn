@@ -116,7 +116,7 @@ text = "Play"
 [node name="CreditsButton" type="Button" parent="startMenu/ButtonsMargin/ButtonsVBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Credits"
+text = "Instructions"
 
 [node name="ExitButton" type="Button" parent="startMenu/ButtonsMargin/ButtonsVBoxContainer"]
 layout_mode = 2
@@ -175,17 +175,16 @@ text = "Back"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
-text = "Credits"
+text = "Instructions"
 horizontal_alignment = 1
 
 [node name="CreditsText" type="Label" parent="startMenu/CreditsView/CreditsMargin/CreditsVbox"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-
-Yeah this looks bad but i cant be bothered to fix it on this god dam laptop
-"
+text = "Move with WASD, and get all 3 screws to go back home! 
+Inside the green zone your safe! But outside of it, your heat will rise up 
+and if completed, will respawn you to the spawn point!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
